@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd kernels
+../linux/release/spmv_cocktail ../matrix/accelerator.mtx

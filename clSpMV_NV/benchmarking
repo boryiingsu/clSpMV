@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cd kernels
+../linux/release/bench_overhead
+../linux/release/bench_dia
+../linux/release/bench_bdia
+../linux/release/bench_sbell
+../linux/release/bench_bell
+../linux/release/bench_bcsr
+../linux/release/bench_sell
+../linux/release/bench_ell
+../linux/release/bench_csr
+../linux/release/bench_coo

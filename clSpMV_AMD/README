@@ -1,0 +1,97 @@
+#############################################################
+#	Compilation
+#############################################################
+Before compiling the clSpMV framework, please remember to modify 
+the OCLROOTDIR path to your AMD OpenCL SDK directory
+OCLROOTDIR    := your_AMD_SDK_directory
+This will help the makefile to locate your opencl header files and libraries. 
+If your opencl header files and libraries locate at other places, 
+please also modify OCLROOTDIR, OCLCOMMONDIR, OCLBINDIR, OCLLIBDIR 
+and direct them to the correct paths.
+Most of the cases you only need to modify the OCLROOTDIR path. 
+
+
+#############################################################
+#	Environment Setting
+#############################################################
+Before executing the binaries, please remember to set the CLSPMVPATH environment variable:
+export CLSPMVPATH=/install-path-to-the-clSpMV-framework/clSpMV_NV
+or just set the environment variable in your .bashrc file.
+The program needs the path to find the .cl OpenCL kernel files and the
+benchmarking files.
+The compilation procedure involves copying all the OpenCL kernels to the 
+/tmp/ directory. The AMD OpenCL runtime will try to find the .cl kernels
+from that directory. If the executable says it cannot find the kernel files, 
+please copy the .cl kernels to the /tmp/directory. If the executable says it 
+cannot find some constants, please copy the include/constant.h file to the /tmp/ 
+directory. 
+
+
+#############################################################
+#	Executables
+#############################################################
+You need to run the benchmarking script in the 
+/install-path-to-the-clSpMV-framework/clSpMV_NV 
+directory to generate the benchmarking data.
+This step might take some time.
+If you want to perform this step manually, here are the explanations:
+    bench_overhead: benchmark the kernel launch overhead
+    bench_dia: benchmark the implementations for the dia format
+    bench_bdia: benchmark the implementations for the bdia format
+    bench_sbell: benchmark the implementations for the sbell format, covering all 8 different blocking dimensions
+    bench_bell: benchmark the implementations for the bell format, covering all 8 different blocking dimensions
+    bench_bcsr: benchmark the implementations for the bcsr format, covering all 8 different blocking dimensions
+    bench_sell: benchmark the implementations for the sell format
+    bench_ell: benchmark the implementations for the ell format
+    bench_csr: benchmark the implementations for the csr format, trying out different numbers of work groups
+    bench_coo: benchmark the implementations for the coo format, trying out different numbers of work groups
+
+After all these benchmarking data are collected, now you can run the
+spmv_cocktail executable
+Usage: spmv_cocktail matrix.mtx
+The matrix needs to be in matrix market format.
+You can run the cocktail_example script to get a feel of this executable.
+
+For convenience, I also include an executable that is able to 
+conver a matrix to any supported single format, and evaluate the execution 
+time under all provided implementations. 
+The executable is called spmv_all, in the following shows its usage.
+Usage: spmv_all input_matrix.mtx method execution_times
+The matrix needs to be in the matrix market format
+The method is the format you want to use:
+	Method 0: mesure the memory bandwidth and kernel launch overhead only
+	Method 1: use the csr matrix format, using the scalar implementations
+	Method 2: use the csr matrix format, using the vector implementations
+	Method 3: use the bdia matrix format
+	Method 4: use the dia matrix format
+	Method 5: use the ell matrix format
+	Method 6: use the coo matrix format
+	Method 7: use the bell matrix format
+	Method 8: use the bcsr matrix format
+	Method 9: use the sell matrix format
+	Method 10: use the sbell matrix format
+The execution_times refers to how many times of SpMV you want to do to benchmark the execution time
+
+
+#############################################################
+#	Framework Usage
+#############################################################
+If you want to use the clSpMV framework on your own thing, please 
+take a look at the src/eval.cpp file. The example function
+gives you an example of using the framework to compute y=A^k*x.
+If you are using krylov subspace methods or some sparse solvers 
+such as conjugate gradient, you can follow the example to use 
+this framework. In addition to the example, there are still 
+other APIs availabe in the /include/spmv_cocktail.h file.
+
+ 
+#############################################################
+#	Contact
+#############################################################
+If you have any questions or comments, please send me emails:
+subrian@eecs.berkeley.edu
+
+
+
+
+

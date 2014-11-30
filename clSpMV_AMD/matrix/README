@@ -1,0 +1,6 @@
+This data is included to show how the spmv_cocktail executable works.
+Data is taken from the nvidia website:
+http://www.nvidia.com/content/NV_Research/matrices.zip
+The data comes from the collection of 14 matrices from the following paper:
+Samuel Williams, Leonid Oliker, Richard Vuduc, John Shalf, Katherine Yelick, and James Demmel. 2007. Optimization of sparse matrix-vector multiplication on emerging multicore platforms. In Proceedings of the 2007 ACM/IEEE conference on Supercomputing (SC '07). ACM, New York, NY, USA, , Article 38 , 12 pages. DOI=10.1145/1362622.1362674 http://doi.acm.org/10.1145/1362622.1362674 
+
