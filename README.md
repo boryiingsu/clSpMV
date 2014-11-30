@@ -31,21 +31,33 @@ Usage: spmv_cocktail matrix.mtx
 spmv_all: Represent the matrix using any 1 of the 9 supported format, and evaluate the execution time of different implementations of that format.
 Usage: spmv_all input_matrix.mtx method execution_times
 The method is the format you want to use:
+
 Method 0: measure the memory bandwidth and kernel launch overhead only
+
 Method 1: use the csr matrix format, using the scalar implementations
+
 Method 2: use the csr matrix format, using the vector implementations
+
 Method 3: use the bdia matrix format
+
 Method 4: use the dia matrix format
+
 Method 5: use the ell matrix format
+
 Method 6: use the coo matrix format
+
 Method 7: use the bell matrix format
+
 Method 8: use the bcsr matrix format
+
 Method 9: use the sell matrix format
+
 Method 10: use the sbell matrix format
 
 Citation
 ========
 Bor-Yiing Su, Kurt Keutzer, "clSpMV: A Cross-Platform OpenCL SpMV Framework on GPUs," in International Conference on Supercomputing (ICS 2012), Italy, June 2012.
+
 @inproceedings{ics2012-su, 
 author = {Bor-Yiing Su and Kurt Keutzer}, 
 title = {clSpMV: A Cross-Platform OpenCL SpMV Framework on GPUs},
